@@ -1,21 +1,8 @@
-export default function Cart() {
-  const cart = [
-    {
-      id: 1,
-      image: "🌿",
-      name: "Fern",
-    },
-    {
-      id: 2,
-      image: "🌵",
-      name: "Cactus",
-    },
-    {
-      id: 3,
-      image: "🌻",
-      name: "Sunflower",
-    },
-  ];
+export default function Cart({ cart, setCart }) {
+  if (cart.length === 0) {
+    return <p>Add to see items in cart</p>;
+  }
+
   return (
     <ul className="cart">
       {cart.map((cartItem) => (
@@ -32,10 +19,10 @@ export default function Cart() {
       ))}
     </ul>
   );
+}
 
-  function addToCart(plant) {
-    const newCart = cart;
-    newCart.push(plant);
-    setCart(newCart);
-  }
+export function addToCart(cart, plant, setCart) {
+  console.log("I'M ADDING TO CART");
+  const item = plant;
+  setCart([...cart, item]);
 }
