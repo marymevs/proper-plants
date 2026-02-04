@@ -11,9 +11,13 @@ export default function Cart({ cart, setCart }) {
             {cartItem.image} {cartItem.name}
           </span>
           <span id="cart-buttons">
-            <button>-</button>
+            <button onClick={() => removeFromCart(cart, cartItem, setCart)}>
+              -
+            </button>
             <p>{cartItem.quantity}</p>
-            <button>+</button>
+            <button onClick={() => addToCart(cart, cartItem, setCart)}>
+              +
+            </button>
           </span>
         </li>
       ))}
@@ -24,11 +28,25 @@ export default function Cart({ cart, setCart }) {
 export function addToCart(cart, plant, setCart) {
   const itemExists = cart.find((i) => i.id === plant.id);
   if (itemExists) {
-    cart.map((item) =>
-      item.id === plant.id ? { ...item, quantity: item.quantity++ } : item,
+    setCart(
+      cart.map((item) =>
+        item.id === plant.id ? { ...item, quantity: item.quantity + 1 } : item,
+      ),
     );
   } else {
     const item = { ...plant, quantity: 1 };
     setCart([...cart, item]);
   }
+}
+
+export function removeFromCart(cart, plant, setCart) {
+  const itemExists = cart.find((i) => i.id === plant.id);
+  if (!itemExists) return;
+  setCart(
+    cart
+      .map((item) =>
+        item.id === plant.id ? { ...item, quantity: item.quantity - 1 } : item,
+      )
+      .filter((item) => item.quantity > 0),
+  );
 }
