@@ -12,7 +12,7 @@ export default function Cart({ cart, setCart }) {
           </span>
           <span id="cart-buttons">
             <button>-</button>
-            <p>1</p>
+            <p>{cartItem.quantity}</p>
             <button>+</button>
           </span>
         </li>
@@ -22,7 +22,13 @@ export default function Cart({ cart, setCart }) {
 }
 
 export function addToCart(cart, plant, setCart) {
-  console.log("I'M ADDING TO CART");
-  const item = plant;
-  setCart([...cart, item]);
+  const itemExists = cart.find((i) => i.id === plant.id);
+  if (itemExists) {
+    cart.map((item) =>
+      item.id === plant.id ? { ...item, quantity: item.quantity++ } : item,
+    );
+  } else {
+    const item = { ...plant, quantity: 1 };
+    setCart([...cart, item]);
+  }
 }
