@@ -19,17 +19,15 @@ export default function Cart() {
   return (
     <ul className="cart">
       {cart.map((cartItem) => (
-        <li>
-          <p>
+        <li key={cartItem.name}>
+          <span>
             {cartItem.image} {cartItem.name}
-          </p>
-          <p>
-            <span>
-              <button>-</button>
-              <p>1</p>
-              <button>+</button>
-            </span>
-          </p>
+          </span>
+          <span id="cart-buttons">
+            <button>-</button>
+            <p>1</p>
+            <button>+</button>
+          </span>
         </li>
       ))}
     </ul>

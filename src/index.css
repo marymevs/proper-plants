@@ -36,13 +36,15 @@ main {
 .cart li {
   padding: 3px;
   border-bottom: 1px lightgrey solid;
+  display: flex;
+  flex-direction: column;
 }
 
-span {
+#cart-buttons {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
 }
 
-span p {
+#cart-buttons p {
   justify-self: center;
 }
