@@ -4,7 +4,9 @@
 }
 
 main {
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 5px;
 }
 
 .plants {
@@ -23,5 +25,24 @@ main {
 
 .plantImage {
   font-size: 60pt;
+  justify-self: center;
+}
+
+.cart {
+  list-style-type: none;
+  width: 100%;
+}
+
+.cart li {
+  padding: 3px;
+  border-bottom: 1px lightgrey solid;
+}
+
+span {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+}
+
+span p {
   justify-self: center;
 }
