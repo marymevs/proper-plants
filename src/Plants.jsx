@@ -5,7 +5,11 @@ export default function Plants() {
   return (
     <ul className="plants">
       {PLANTS.map((plant) => (
-        <li key={plant.name}>{plant.name}</li>
+        <li key={plant.name}>
+          <p className="plantImage">{plant.image}</p>
+          <h3>{plant.name}</h3>
+          <button>Add to cart</button>
+        </li>
       ))}
     </ul>
   );
