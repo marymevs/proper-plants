@@ -1,3 +1,11 @@
+import Plants from "./Plants";
 export default function App() {
-  return <></>;
+  return (
+    <>
+      <header>Proper Plants</header>
+      <main>
+        <Plants></Plants>
+      </main>
+    </>
+  );
 }
